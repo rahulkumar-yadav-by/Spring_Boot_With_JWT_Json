@@ -32,7 +32,11 @@ public class UserService {
 
     public String saveUser(User user){
         User savedUser= userRepository.save(user);
-       return ("Successfully Created User \nToken :\n\t" + tokenService.createToken(savedUser.getId()));
+       return ("{\nMessage :\nSuccessfully Created User " +
+               "\nUser Data :\n\tId : "+ savedUser.getId()+"\n\tName : "+savedUser.getName()+"\n\tEmail : "+savedUser.getEmail()+"\n\tPassword : "+savedUser.getPassword()+"\n"+
+               "Token :\n\t" +tokenService.createToken(savedUser.getId())+
+               "\n}"
+       );
     }
 
 
